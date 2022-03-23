@@ -2,7 +2,7 @@
 const { Schema, model } = require('mongoose');
 const moment = require('moment');
 
-// Schema to create a course model
+// Schema to create a Thought model
 const ThoughtSchema = new Schema(
   {
     ThoughtText: {

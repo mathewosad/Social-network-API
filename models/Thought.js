@@ -1,31 +1,25 @@
+// import dependencies
 const { Schema, model } = require('mongoose');
+const moment = require('moment');
 
 // Schema to create a course model
-const courseSchema = new Schema(
+const ThoughtSchema = new Schema(
   {
-    courseName: {
+    ThoughtText: {
+      type: String,
+      required: true,
+      maxlength: 280,
+      minlength: 1
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: createdAtVal => moment(createdAtVal).format('MMMM Do YYYY, h:mm:ss a')
+    },
+    username: {
       type: String,
       required: true,
     },
-    inPerson: {
-      type: Boolean,
-      default: true,
-    },
-    startDate: {
-      type: Date,
-      default: Date.now(),
-    },
-    endDate: {
-      type: Date,
-      // Sets a default value of 12 weeks from now
-      default: () => new Date(+new Date() + 84 * 24 * 60 * 60 * 1000),
-    },
-    students: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Student',
-      },
-    ],
   },
   {
     toJSON: {
@@ -35,6 +29,7 @@ const courseSchema = new Schema(
   }
 );
 
-const Course = model('course', courseSchema);
 
-module.exports = Course;
+const Thought = model('Thought', ThoughtSchema);
+
+module.exports = Thought;

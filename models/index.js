@@ -1,4 +1,6 @@
-const Student = require('./Student');
-const Course = require('./Course');
+// Packaging the models for the API
+const User = require('./User');
+const Thought = require('./Thought');
 
-module.exports = { Student, Course };
+// this exports the models to be used in the API
+module.exports = { User, Thought };

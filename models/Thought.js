@@ -29,7 +29,7 @@ const ThoughtSchema = new Schema(
   }
 );
 
-
+// this is to create a virtual property called 'comments'
 const Thought = model('Thought', ThoughtSchema);
 
 module.exports = Thought;

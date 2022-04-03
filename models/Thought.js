@@ -1,35 +1,41 @@
-// import dependencies
 const { Schema, model } = require('mongoose');
 const moment = require('moment');
+const reactionSchema = require('./Reaction');
 
-// Schema to create a Thought model
-const ThoughtSchema = new Schema(
+// this the schema for the thought
+const thoughtSchema = new Schema(
   {
-    ThoughtText: {
+    thoughtText: {
       type: String,
-      required: 'Please enter a thought',
+      required: 'A thought is required',
       minlength: 1,
       maxlength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: createdAtVal => moment(createdAtVal).format('MMMM Do YYYY, h:mm:ss a')
+      get: (timestamp) => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a'),
     },
     username: {
       type: String,
       required: true,
     },
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
-      virtuals: true,
+      getters: true,
     },
     id: false,
   }
 );
 
-// this is to create a virtual property called 'comments'
-const Thought = model('Thought', ThoughtSchema);
+// this Reaction model is used to create a new reaction
+thoughtSchema.virtual('reactionCount').get(function () {
+  return this.reactions.length;
+});
+
+// this is the model for the user
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;

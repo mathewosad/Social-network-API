@@ -25,4 +25,12 @@ router.route('/:thoughtId/reactions').post(addReaction);
 // this route is used to remove a reaction from a thought
 router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
 
+// /api/thoughts/:thoughtId
+router
+    .route('/:thoughtId')
+    .get(getSingleThought)
+    .put(updateThought)
+    .delete(deleteThought)
+    .post(createReaction);
+
 module.exports = router;

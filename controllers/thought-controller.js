@@ -22,7 +22,7 @@ const thoughtController = {
     Thought.findOne({ _id: req.params.thoughtId })
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
-          return res.status(404).json({ message: 'Thought with this ID does not exist.' });
+          return res.status(404).json({ message: 'Thought ID does not exist.' });
         }
         res.json(dbThoughtData);
       })
@@ -45,7 +45,7 @@ const thoughtController = {
       })
       .then((dbUserData) => {
         if (!dbUserData) {
-          return res.status(404).json({ message: 'Thought has been created but no user with this id!' });
+          return res.status(404).json({ message: 'Thought has been created but no user with this thought  id!' });
         }
 
         res.json({ message: 'Thought has been created!' });

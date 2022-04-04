@@ -24,9 +24,24 @@
   
   
 
+## Demo
+
+![Demo](https://drive.google.com/file/d/1ntPdtWNQFcFKglUj6UzzEuyvN_zOdgef/view)
+
 ## Screenshots
 
-![Screenshot](./Assets/)
+* Creates and add  User 
+![](./Assets/Users.JPG)
+
+
+* Craete and add friend
+![](./Assets/Add%20friend.JPG)
+
+* Creates and get all thoughts
+![](./Assets/Thoughts.JPG)
+
+* Creates and get reaction added 
+![](./Assets/reaction%20added.JPG)
 
 ## Features
 

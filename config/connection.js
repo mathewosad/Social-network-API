@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+const { connect, connection } = require('mongoose');
 
-// this connects the database to the server
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/socialmedia', {
+const connectionString =
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/socialDB';
+
+connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
 });
 
-module.exports = mongoose.connection;
+module.exports = connection;
